@@ -1,0 +1,62 @@
+<header>
+    <div id="sidemenu" class="menu-collapsed">
+        {{!-- Header --}}
+        <div id="header">
+            <div id="menu-btn">
+                <div class="btn-hamburger"></div>
+                <div class="btn-hamburger"></div>
+                <div class="btn-hamburger"></div>
+            </div>
+        </div>
+        {{!-- Perfil --}}
+        <div id="profile">
+            <div id="photo"><img src="/img/profile.svg" alt=""></div>
+            <div id="name"><span>Administrador</span></div>
+        </div>
+        {{!-- Items --}}
+        <div id="menu-items">
+            <div class="item">
+                <a href="/graficos">
+                    <div class="icon"><img src="/img/dshbtn.svg"></div>
+                    <div class="title">Gráficos</div>
+                </a>
+            </div>
+            <div class="item">
+                <a href="/asistencias">
+                    <div class="icon"><img src="/img/dybtn.svg"></div>
+                    <div class="title">Asistencia diaria</div>
+                </a>
+            </div>
+            <div class="item">
+                <a href="/asistencias-semana">
+                    <div class="icon"><img src="/img/wkbtn.svg"></div>
+                    <div class="title">Asistencia semanal</div>
+                </a>
+            </div>
+            <div class="item">
+                <a href="/asistencias-mes">
+                    <div class="icon"><img src="/img/mthbtn.svg"></div>
+                    <div class="title">Asistencia mensual</div>
+                </a>
+            </div>
+            <div class="item">
+                <a href="/lista">
+                    <div class="icon"><img src="/img/list.svg"></div>
+                    <div class="title">Lista de alumnos</div>
+                </a>
+            </div>
+            <div class="item">
+                <a href="/cargar">
+                    <div class="icon"><img src="/img/uplbtn.svg"></div>
+                    <div class="title">Cargar Excel</div>
+                </a>
+            </div>
+            <div class="item">
+                <a onclick="confirmarBorrado()">
+                    <div class="icon"><img src="/img/trash.svg"></div>
+                    <div class="title">Borrar base de datos</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>

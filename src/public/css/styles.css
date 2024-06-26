@@ -1,0 +1,470 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+
+:root{
+    --width:300px;
+    --padding: 10px;
+    --bgcolor: #E3E7F7;
+    --hovercolor: #B9C2DA;
+    --width-collapsed:100px;
+}
+
+#sidemenu{
+    background-color: var(--bgcolor);
+    color: #7C6DA5;
+    border-right:solid 1px;
+    border-color: #B9C2DA;
+    position: fixed; 
+    height: 100%;
+    left: 0;
+    top: 0;
+    transition: width 0.3s ease;
+    overflow: auto;
+}
+
+.body-expanded{
+    margin-left: var(--width);
+    transition: margin-left 0.5s;
+}
+
+#sidemenu a{
+    color: #7C6DA5;
+    text-decoration: none;
+    transition: left 0.5s;
+}
+
+/* <<<<<<<<<<<<<<<<<<Header>>>>>>>>>>>>>>>>>> */
+
+#sidemenu #header{
+    box-sizing: border-box;
+    border-radius: solid 1px var(--hovercolor);
+}
+
+#sidemenu #header #title{
+    box-sizing: border-box;
+    /* overflow: hidden; */
+}
+
+#sidemenu.menu-collapsed #header #title {
+    width: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    transition: width 0.3s ease, padding 0.3s ease;
+}
+
+#sidemenu.menu-collapsed #profile #name {
+    width: 0;
+    overflow: hidden;
+    transition: width 0.3s ease;
+}
+
+#sidemenu #header #title, #sidemenu #header #menu-btn{
+    vertical-align: middle;
+    transition: width 0.3s ease;
+}
+
+#sidemenu #header #menu-btn{
+    display: inline-block;
+}
+
+#sidemenu #header #menu-btn{
+    cursor: pointer;
+    padding: 10px;
+    width: var(--width-collapsed);
+    box-sizing: border-box;
+}
+
+#sidemenu #header #menu-btn:hover{
+    background-color: var(--hovercolor);
+}
+
+#sidemenu #header #menu-btn .btn-hamburger{
+    background-color:#7C6DA5;
+    width: 30px;
+    height: 4px;
+    margin: 5px 0;
+}
+
+/* <<<<<<<<<<<<<<<<<<Profile>>>>>>>>>>>>>>>>>> */
+
+#sidemenu #profile{
+    border-bottom: 1px solid var(--hovercolor);
+    padding: var(--padding) 0;
+    text-align: center;
+    transition: width 0.3s ease;
+}
+
+#sidemenu #profile #photo{
+    transition: max-width 0.3s ease;
+    box-sizing: border-box;
+    padding: var(--padding);
+    margin: 0 auto;
+    transition: width 0.3s ease;
+}
+
+#sidemenu.menu-collapsed #profile #photo {
+    width: 90px;
+}
+
+#sidemenu #profile #photo img{
+    border-radius: 50%;
+    width: 60%;
+}
+
+#sidemenu #profile #photo, #sidemenu #profile #name{
+    font-family: 'Rubik', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    padding: var(--padding)0;
+    overflow: hidden;
+    transition: width 0.3s ease;
+}
+
+/* <<<<<<<<<<<<<<<<<<Item>>>>>>>>>>>>>>>>>> */
+
+#sidemenu #menu-items{
+    overflow: hidden;
+}
+
+#sidemenu #menu-items .item{
+    width: var(--width);
+    height: 70px;
+    transition: width 0.3s ease;
+}
+
+#sidemenu.menu-expanded {
+    width: var(--width);
+}
+
+#sidemenu #header #title {
+    transition: width 0.3s ease;
+}
+
+#sidemenu.menu-collapsed {
+    width: var(--width-collapsed);
+    overflow: hidden;
+}
+
+#sidemenu.menu-expanded #header #menu-btn {
+    width: var(--width);
+}
+
+#sidemenu.menu-collapsed #header #menu-btn {
+    width: var(--width-collapsed);
+}
+
+#sidemenu.menu-expanded #profile {
+    width: var(--width);
+}
+
+#sidemenu.menu-collapsed #profile {
+    width: var(--width-collapsed);
+    padding: 0;
+}
+
+#sidemenu.menu-expanded #menu-items .item {
+    width: var(--width);
+}
+
+#sidemenu.menu-collapsed #menu-items .item {
+    width: var(--width-collapsed);
+}
+
+
+#sidemenu #menu-items .item .icon, #sidemenu #menu-items .item .title{
+    font-size: 20px;
+    vertical-align: middle;
+    overflow: hidden;
+    display: inline-block;
+    transition: padding 0.3s ease, width 0.3s ease;
+}
+
+#sidemenu.menu-collapsed #menu-items .item .title {
+    padding: 0;
+    width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: padding 0.3s ease, width 0.3s ease;
+}
+
+#sidemenu.menu-expanded #menu-items .item .title {
+    padding: var(--padding);
+    width: auto;
+}
+
+#sidemenu #menu-items .item a {
+    height: 80px;  /* Ajusta la altura según tus preferencias */
+    display: flex;
+    align-items: center;
+   
+    box-sizing: border-box;
+}
+
+#sidemenu #menu-items .item a:hover {
+    background-color: var(--hovercolor);
+    border-radius: 1px;
+}
+
+
+#sidemenu #menu-items .item .icon{
+    box-sizing: border-box;
+    padding: 10px 0;
+    width: var(--width-collapsed);
+}
+
+#sidemenu #menu-items .item .icon img{
+    width: 80px;
+}
+
+#sidemenu #menu-items .item .title{
+    padding: var(--padding);
+}
+
+.menu-expanded{
+    width: var(--width);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+}
+
+.menu-expanded #header #title {
+    display: inline-block;
+    width: calc(100% - 50px);
+    margin-right: -5px;
+    padding: var(--padding);
+}
+
+.menu-expanded #header #title span{
+    width: calc(var(--width) - var(--width-collapsed) - 5px);
+    overflow: hidden;
+    display: inline-block;
+}
+
+.menu-expanded #profile #photo{
+    width: 100px;
+}
+
+.menu-expanded #profile #name{
+    width: 100%;
+}
+
+.menu-collapsed{
+    width: var(--width-collapsed);
+}
+
+.menu-collapsed #header #title{
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-collapsed #profile #name{
+    display: none;
+}
+
+.menu-collapsed .item {
+    width: 100px;
+}
+
+/* <<<<<<<<<<<<<<<<<<Graficos>>>>>>>>>>>>>>>>>> */
+
+section.cols-3 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 80vh;
+    margin: 0 20px;
+}
+
+.main-chart-container{
+    display: flex;
+    max-width: 200px;
+}
+
+.chart-container {
+    text-align: center;
+    flex: 1;
+    max-width: 100%;
+    padding-left: 100px;
+}
+
+canvas {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+.chart-title {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 600;
+    color: #7C6DA5;
+    margin-bottom: 20px;
+}
+
+/* <<<<<<<<<<<<<<<<<<Greficos Circulares>>>>>>>>>>>>>>>>>> */
+
+.checkbox-verde,
+.checkbox-rojo,
+.checkbox-amarillo,
+.checkbox-naranja {
+    display: none;
+}
+
+.checkbox-verde + label,
+.checkbox-rojo + label,
+.checkbox-amarillo + label,
+.checkbox-naranja + label {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    position: relative;
+    background: #ccc;
+    cursor: pointer;
+}
+
+.checkbox-verde:checked + label {
+    background: #7DBD5F;
+}
+
+.checkbox-rojo:checked + label {
+    background: #BD5F5F;
+}
+
+.checkbox-amarillo:checked + label {
+    background: #BDAE5F;
+}
+
+.checkbox-naranja:checked + label {
+    background: #4481A2;
+}
+
+.checkbox-verde + label:after,
+.checkbox-rojo + label:after,
+.checkbox-amarillo + label:after,
+.checkbox-naranja + label:after {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: white;
+    transition: all 0.2s;
+}
+
+.checkbox-verde:checked + label:after {
+    background: #7DBD5F;
+}
+
+.checkbox-rojo:checked + label:after {
+    background: #BD5F5F;
+}
+
+.checkbox-amarillo:checked + label:after {
+    background: #BDAE5F;
+}
+
+.checkbox-naranja:checked + label:after {
+    background: #4481A2;
+}
+
+/* <<<<<<<<<<<<<<<<<<Body>>>>>>>>>>>>>>>>>> */
+.body-container{
+    background-color: #E3E7F7;
+    color: #7C6DA5;
+}
+
+/* <<<<<<<<<<<<<<<<<<Cargar>>>>>>>>>>>>>>>>>> */
+.container-cargar{
+    font-family: 'Rubik', sans-serif;
+    font-weight: 600;
+    font-size: 30px;
+}
+#upload-btn{
+    background-color: #E3E7F7;
+    font-weight: 600;
+    color: #7C6DA5;
+    border:none;
+    border-radius: 10px;
+    padding: 15px 20px;
+    box-shadow: 5px 5px 15px #B9C2DA, 
+                -5px -5px 15px #FFFFFF;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+#upload-btn:hover {
+    box-shadow: 7px 7px 20px #B9C2DA, 
+                -7px -7px 20px #FFFFFF;
+}
+
+/* <<<<<<<<<<<<<<<<<<Data container>>>>>>>>>>>>>>>>>> */
+.t-general-styles{
+    border-radius: 10px;
+    border-color: #8B93B0;
+    border: 2px;
+}
+
+.t-title{
+    font-weight: 600;
+    color: #7C6DA5;
+}
+
+.t-content{
+    font-weight: 300;
+    
+}
+
+.table-container{
+    font-family: 'Rubik', sans-serif;
+    font-weight: 600;
+    color: #7C6DA5;
+}
+
+.export-btn{
+    background-color: #E3E7F7;
+    font-weight: 600;
+    color: #7C6DA5;
+    border:none;
+    border-radius: 10px;
+    padding: 15px 20px;
+    box-shadow: 5px 5px 15px #B9C2DA, 
+                -5px -5px 15px #FFFFFF;
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.btn-day{
+    display: flex;
+}
+
+#btn-sep1,#btn-sep{
+ margin-right: 10px;
+}
+
+#btn-sep1{
+    margin-right: 0;
+    margin-left: 10px;
+}
+
+
+/* <<<<<<<<<<<<<<<<<<Graficos>>>>>>>>>>>>>>>>>> */
+
+.chart {
+    width: 100%;
+    min-height: 50vh;
+}
+
+.add-student{
+    background-color: #E3E7F7;
+    color: #7D6EA6;
+}
+
+.add-studente-c{
+    color: #7D6EA6;
+    font-weight: 600;
+}
+
+
+
+
+

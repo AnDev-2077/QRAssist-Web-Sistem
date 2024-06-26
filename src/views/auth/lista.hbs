@@ -1,0 +1,182 @@
+<div class="container mt-5 table-container">
+    <h1>Lista General</h1>
+
+    <a class="btn-modals" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        <img src="/img/addbutton.svg" alt="">
+    </a>
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header add-student">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Agregar Alumno</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <form action="/add" method="POST">
+                            <div class="mb-3">
+                                <label class="col-form-label">Nombres:</label>
+                                <input name="nombre" type="text" class="form-control" required="" pattern="[a-zA-Z\s]+"
+                                    title="Los nombres no pueden contener números">
+                            </div>
+                            <div class="mb-3">
+                                <label class="col-form-label">Apellidos:</label>
+                                <input name="apellido" type="text" class="form-control" required=""
+                                    pattern="[a-zA-Z\s]+" title="Los apellidos no pueden contener números">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="col-form-label">Número de DNI:</label>
+                                    <input name="Codigo_QR" type="text" class="form-control" required=""
+                                        pattern="[0-9]{8}" title="Ingresa un número de DNI correcto">
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="col-form-label">Carrera:</label>
+                                    <input name="carrera_curso" type="text" class="form-control" required=""
+                                        pattern="[a-zA-Z\s]+" title="Las carreras no pueden contener números">
+                                </div>
+                                <div class="col-md-3">
+                                    <label class="col-form-label">Turno:</label>
+                                    <input maxlength="6" minlength="5" name="turno" type="text" class="form-control"
+                                        pattern="[a-zA-Z\s]+" title="Los turnos son: Mañana, Tarde y Noche">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="col-form-label">Sección:</label>
+                                    <input name="seccion" type="text" class="form-control" required=""
+                                        pattern="[A-Za-z]" title="Las secciones solo pueden ser letras de A a Z">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="col-form-label">Ciclo:</label>
+                                    <input name="ciclo" type="text" class="form-control" required=""
+                                        pattern="\d[A-Za-z]{2}" title="Ejemplo 1ro 2do 3ro ...">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="export-btn" data-bs-dismiss="modal">Cancelar</button>
+                                <button class="export-btn">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+
+        <input type="text" class="form-control" id="filtro" oninput="filtrarAlumnos()"
+            placeholder="Buscar alumno por nombre">
+    </div>
+    <table id="t-general-styles" class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th class="t-title" scope="col">Código QR</th>
+                <th class="t-title" scope="col">Apellidos</th>
+                <th class="t-title" scope="col">Nombres</th>
+                <th class="t-title" scope="col">Carrera</th>
+                <th class="t-title" scope="col">Sección</th>
+                <th class="t-title" scope="col">Ciclo</th>
+                <th class="t-title" scope="col">Turno</th>
+                <th class="t-title" scope="col">Fecha</th>
+                <th class="t-title" scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody class="t-content">
+            {{#each alumnos}}
+            <tr id="row{{Codigo_QR}}">
+                <td>{{Codigo_QR}}</td>
+                <td>{{apellido}}</td>
+                <td>{{nombre}}</td>
+                <td>{{carrera_curso}}</td>
+                <td>{{seccion}}</td>
+                <td>{{ciclo}}</td>
+                <td>{{turno}}</td>
+                <td>{{moment this.fecha "DD/MM/YYYY"}}</td>
+                <td>
+                    <button class="export-btn btn-modals" data-bs-toggle="modal"
+                        data-bs-target="#editModal{{Codigo_QR}}">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+
+                    <div class="modal fade" id="editModal{{Codigo_QR}}" data-bs-backdrop="static"
+                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content ">
+                                <div class="modal-header add-student">
+                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar información del alumno
+                                    </h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="container-fluid">
+                                        <form action="/editar/{{Codigo_QR}}" method="POST">
+                                            <div class="mb-3">
+                                                <label class="col-form-label">Nombres:</label>
+                                                <input id="inputNombres" value="{{nombre}}" name="nombre" type="text"
+                                                    class="form-control" required="" pattern="[a-zA-Z\s]+"
+                                                    title="Los nombres no pueden contener números">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label class="col-form-label">Apellidos:</label>
+                                                <input id="inputApellidos" value="{{apellido}}" name="apellido"
+                                                    type="text" class="form-control" required="" pattern="[a-zA-Z\s]+"
+                                                    title="Los apellidos no pueden contener números">
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label class="col-form-label">Número de DNI:</label>
+                                                    <input id="inputNumerodni" value="{{Codigo_QR}}" name="dni"
+                                                        type="text" class="form-control" required="" pattern="[0-9]{8}"
+                                                        title="Ingresa un número de DNI correcto">
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label class="col-form-label">Carrera:</label>
+                                                    <input id="inputCarrera" value="{{carrera_curso}}"
+                                                        name="carrera_curso" type="text" class="form-control"
+                                                        required="" pattern="[a-zA-Z\s]+"
+                                                        title="Las carreras no pueden contener números">
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label class="col-form-label">Turno:</label>
+                                                    <input id="inputTurno" value="{{turno}}" name="turno" type="text"
+                                                        class="form-control" maxlength="6" minlength="5" required=""
+                                                        pattern="[a-zA-Z\s]+"
+                                                        title="Los turnos son: Mañana, Tarde y Noche">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="col-form-label">Sección:</label>
+                                                    <input id="inputSeccion" value="{{seccion}}" name="seccion"
+                                                        type="text" class="form-control" required="" pattern="[A-Za-z]"
+                                                        title="Las secciones solo pueden ser letras de A a Z">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label class="col-form-label">Ciclo:</label>
+                                                    <input id="inputCiclo" value="{{ciclo}}" name="ciclo" type="text"
+                                                        class="form-control" required="" pattern="\d[A-Za-z]{2}"
+                                                        title="Ejemplo 1ro 2do 3ro ...">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="export-btn"
+                                                    data-bs-dismiss="modal">Cancelar</button>
+                                                <button class="export-btn">Guardar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="EliminarAlumno('{{Codigo_QR}}')" class="export-btn">
+                        <i class="fa-solid fa-trash"></i></button>
+                </td>
+            </tr>
+            {{/each}}
+
+        </tbody>
+    </table>
+</div>

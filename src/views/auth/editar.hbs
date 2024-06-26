@@ -1,0 +1,56 @@
+
+{{#each alumnos}}
+    <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+                <div class="modal-header add-student">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Agregar Alumno</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <form action="/editar/{{Codigo_QR}}" method="POST">
+                            <div class="mb-3">
+                                <label class="col-form-label">Nombres:</label>
+                                <input value="{{nombre}}" name="nombre" type="text" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="col-form-label">Apellidos:</label>
+                                <input value="{{apellido}}" name="apellido" id="input-style" type="text"
+                                class="form-control">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="col-form-label">Número de DNI:</label>
+                                    <input value="{{Codigo_QR}}" name="dni" id="input-style" type="text"
+                                    class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="col-form-label">Carrera:</label>
+                                    <input value="{{carrera_curso}}" name="carrera_curso" id="input-style"
+                                    type="text" class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="col-form-label">Sección:</label>
+                                    <input value="{{seccion}}" name="seccion" id="input-style" type="text"
+                                    class="form-control">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="col-form-label">Ciclo:</label>
+                                    <input value="{{ciclo}}" name="ciclo" id="input-style" type="text"
+                                    class="form-control">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="export-btn" data-bs-dismiss="modal">Cancelar</button>
+                                <button class="export-btn">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{{/each}}

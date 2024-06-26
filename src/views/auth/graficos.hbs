@@ -1,0 +1,23 @@
+<section class="cols-3">
+        <div class="chart-container">
+            <h2 class="chart-title">Asistencias semanales</h2>
+            <br>
+            <canvas id="chartSemana"></canvas>
+        </div>
+        <div class="chart-container">
+            <h2 class="chart-title">Asistencias mensuales</h2>
+            <br>
+            <canvas id="chartMes"></canvas>
+        </div>
+        <div class="chart-container">
+            <h2 class="chart-title">Asistencias anuales</h2>
+            <br>
+            <canvas id="chartAno"></canvas>
+        </div>
+</section>
+
+<script>
+    window.asistenciasPorSemana = JSON.parse('{{{asistenciasPorSemana}}}');
+    window.asistenciasPorMes = JSON.parse('{{{asistenciasPorMes}}}');
+    window.asistenciasPorAno = JSON.parse('{{{asistenciasPorAno}}}');
+</script>
