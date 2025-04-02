@@ -16,7 +16,7 @@ QRAssist simplifies attendance management, improves efficiency in handling stude
 - Dowload and install NodeJS
 ### Clone
 - Clone the web sistem repository
-- Clone the API repository [RestAPI](https://github.com/AnDev-2077/RestAPI-DB.git)
+- Clone the API repository [RestAPI](https://github.com/AnDev-2077/QRAssit-RestAPI)
 ### DataBase
 - Create the database whit
 
